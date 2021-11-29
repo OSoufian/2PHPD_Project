@@ -644,6 +644,6 @@ class __TwigTemplate_bd613f335b2123da70476cc8bb0108b7109568f88f2923cccb03f7b89ee
         </div>
     {% endfor %}
 {% endblock %}
-", "@WebProfiler/Collector/notifier.html.twig", "/tmp/tmp.b1f4AGBtfP/test/vendor/symfony/web-profiler-bundle/Resources/views/Collector/notifier.html.twig");
+", "@WebProfiler/Collector/notifier.html.twig", "/tmp/tmp.b1f4AGBtfP/2PHPD/vendor/symfony/web-profiler-bundle/Resources/views/Collector/notifier.html.twig");
     }
 }

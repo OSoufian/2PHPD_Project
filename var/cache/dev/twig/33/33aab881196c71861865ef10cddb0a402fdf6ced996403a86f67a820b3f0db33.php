@@ -227,6 +227,6 @@ class __TwigTemplate_da2ed53978d80eadd8597309d19f152716fece8994b2337396d16098172
         </div>
     {% endif %}
 {% endblock %}
-", "@WebProfiler/Collector/exception.html.twig", "/tmp/tmp.b1f4AGBtfP/test/vendor/symfony/web-profiler-bundle/Resources/views/Collector/exception.html.twig");
+", "@WebProfiler/Collector/exception.html.twig", "/tmp/tmp.b1f4AGBtfP/2PHPD/vendor/symfony/web-profiler-bundle/Resources/views/Collector/exception.html.twig");
     }
 }

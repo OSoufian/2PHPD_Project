@@ -78,7 +78,7 @@ final class Versions
   'symfony/expression-language' => 'v5.3.11@652b72882caddcbfa68754a31b7baf0e4a84cddd',
   'symfony/filesystem' => 'v5.3.4@343f4fe324383ca46792cae728a3b6e2f708fb32',
   'symfony/finder' => 'v5.3.7@a10000ada1e600d109a6c7632e9ac42e8bf2fb93',
-  'symfony/flex' => 'v1.17.5@3f0dc66dcddff035a2ab98ed7e666dfd478b2712',
+  'symfony/flex' => 'v1.17.6@7a79135e1dc66b30042b4d968ecba0908f9374bc',
   'symfony/form' => 'v5.3.11@a5dbc8238db2b56057b293920c4b67879b50566b',
   'symfony/framework-bundle' => 'v5.3.11@f463eb8252f675a51330b1a28c982739cb9005f2',
   'symfony/http-client' => 'v5.3.11@3f55da60fc3c3d6e6a4144ee65a37d23a637107e',

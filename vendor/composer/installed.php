@@ -777,12 +777,12 @@
             'dev_requirement' => false,
         ),
         'symfony/flex' => array(
-            'pretty_version' => 'v1.17.5',
-            'version' => '1.17.5.0',
+            'pretty_version' => 'v1.17.6',
+            'version' => '1.17.6.0',
             'type' => 'composer-plugin',
             'install_path' => __DIR__ . '/../symfony/flex',
             'aliases' => array(),
-            'reference' => '3f0dc66dcddff035a2ab98ed7e666dfd478b2712',
+            'reference' => '7a79135e1dc66b30042b4d968ecba0908f9374bc',
             'dev_requirement' => false,
         ),
         'symfony/form' => array(
