@@ -14,14 +14,19 @@ import Vue from 'vue'
 
 import vuetify from './plugins/vuetify'
 
-// import Home from './components/Home'
+import Home from './components/HelloWorld'
+
+import navbar from './components/NavBar'
 
 // const routes = [
 //     { path: '/', component: Home, name: 'home' }
 // ]
 
-
-
 new Vue({
-    vuetify
+    vuetify,
+    components: {
+        Home,
+        navbar
+    },
+
 }).$mount('#app')
