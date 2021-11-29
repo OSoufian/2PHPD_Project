@@ -1,15 +1,24 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'v5.3.99',
-        'version' => '5.3.99.0',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => NULL,
-        'name' => 'symfony/website-skeleton',
+        'reference' => 'fe0ccb1e90bcf31e8f0a9c0c21af71628ea7deae',
+        'name' => '__root__',
         'dev' => true,
     ),
     'versions' => array(
+        '__root__' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'type' => 'project',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'reference' => 'fe0ccb1e90bcf31e8f0a9c0c21af71628ea7deae',
+            'dev_requirement' => false,
+        ),
         'composer/package-versions-deprecated' => array(
             'pretty_version' => '1.11.99.4',
             'version' => '1.11.99.4',
@@ -1253,13 +1262,13 @@
             'reference' => '9ba1e05fdc7a46979047ba6c8949bd35e3a386a5',
             'dev_requirement' => true,
         ),
-        'symfony/website-skeleton' => array(
-            'pretty_version' => 'v5.3.99',
-            'version' => '5.3.99.0',
-            'type' => 'project',
-            'install_path' => __DIR__ . '/../../',
+        'symfony/webpack-encore-bundle' => array(
+            'pretty_version' => 'v1.13.1',
+            'version' => '1.13.1.0',
+            'type' => 'symfony-bundle',
+            'install_path' => __DIR__ . '/../symfony/webpack-encore-bundle',
             'aliases' => array(),
-            'reference' => NULL,
+            'reference' => 'b5bc02a554693a0007f77aa00e0c45cfbf401ba9',
             'dev_requirement' => false,
         ),
         'symfony/yaml' => array(

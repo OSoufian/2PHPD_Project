@@ -23,7 +23,7 @@ final class Versions
      * @deprecated please use {@see self::rootPackageName()} instead.
      *             This constant will be removed in version 2.0.0.
      */
-    const ROOT_PACKAGE_NAME = 'symfony/website-skeleton';
+    const ROOT_PACKAGE_NAME = '__root__';
 
     /**
      * Array of all available composer packages.
@@ -124,6 +124,7 @@ final class Versions
   'symfony/var-dumper' => 'v5.3.11@a029b3a11b757f9cc8693040339153b4745a913f',
   'symfony/var-exporter' => 'v5.3.11@b16fcf355b810bcbccc2c6eac1d016725dbf9002',
   'symfony/web-link' => 'v5.3.4@0075c9949c30a61d9b9e7483686d72d261480ef1',
+  'symfony/webpack-encore-bundle' => 'v1.13.1@b5bc02a554693a0007f77aa00e0c45cfbf401ba9',
   'symfony/yaml' => 'v5.3.11@226638aa877bc4104e619a15f27d8141cd6b4e4a',
   'twig/extra-bundle' => 'v3.3.4@1fe52d84aa22b7891c7717ef904b1551c8d70100',
   'twig/twig' => 'v3.3.4@65cb6f0b956485e1664f13d023c55298a4bb59ca',
@@ -163,10 +164,10 @@ final class Versions
   'symfony/phpunit-bridge' => 'v5.3.11@7b3637f0ce55c510a0fbe6e4d49b223103b7bf7b',
   'symfony/web-profiler-bundle' => 'v5.3.8@9ba1e05fdc7a46979047ba6c8949bd35e3a386a5',
   'theseer/tokenizer' => '1.2.1@34a41e998c2183e22995f158c581e7b5e755ab9e',
-  'symfony/polyfill-ctype' => '*@',
-  'symfony/polyfill-iconv' => '*@',
-  'symfony/polyfill-php72' => '*@',
-  'symfony/website-skeleton' => 'v5.3.99@',
+  'symfony/polyfill-ctype' => '*@fe0ccb1e90bcf31e8f0a9c0c21af71628ea7deae',
+  'symfony/polyfill-iconv' => '*@fe0ccb1e90bcf31e8f0a9c0c21af71628ea7deae',
+  'symfony/polyfill-php72' => '*@fe0ccb1e90bcf31e8f0a9c0c21af71628ea7deae',
+  '__root__' => 'dev-main@fe0ccb1e90bcf31e8f0a9c0c21af71628ea7deae',
 );
 
     private function __construct()
