@@ -15,4 +15,14 @@ class IndexController extends AbstractController
             'controller_name' => 'IndexController',
         ]);
     }
+
+    /**
+     * @Route("/TODO/{route}", requirements={"route"=".*"}, name="vue")
+     */
+    public function index(): Response
+    {
+        return $this->render('vue/index.html.twig', [
+            'controller_name' => 'VueController',
+        ]);
+    }
 }

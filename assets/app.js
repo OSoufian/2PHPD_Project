@@ -10,3 +10,18 @@ import './styles/app.css';
 
 // start the Stimulus application
 import './bootstrap';
+import Vue from 'vue'
+
+import vuetify from './plugins/vuetify'
+
+// import Home from './components/Home'
+
+// const routes = [
+//     { path: '/', component: Home, name: 'home' }
+// ]
+
+
+
+new Vue({
+    vuetify
+}).$mount('#app')
