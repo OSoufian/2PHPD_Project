@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -42,6 +44,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string", length=255)
      */
     private $email;
+
+    /**
+     * @ORM\OneToMany(targetEntity=TODOList::class, mappedBy="users")
+     */
+    private $tODOLists;
+
+    public function __construct()
+    {
+        $this->tODOLists = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -135,6 +147,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setEmail(string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|TODOList[]
+     */
+    public function getTODOLists(): Collection
+    {
+        return $this->tODOLists;
+    }
+
+    public function addTODOList(TODOList $tODOList): self
+    {
+        if (!$this->tODOLists->contains($tODOList)) {
+            $this->tODOLists[] = $tODOList;
+            $tODOList->setUsers($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTODOList(TODOList $tODOList): self
+    {
+        if ($this->tODOLists->removeElement($tODOList)) {
+            // set the owning side to null (unless already changed)
+            if ($tODOList->getUsers() === $this) {
+                $tODOList->setUsers(null);
+            }
+        }
 
         return $this;
     }
