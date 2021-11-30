@@ -2,18 +2,25 @@
 
 namespace App\Tests;
 
+use App\Entity\TODOList;
 use App\Entity\User;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Persistence\ObjectRepository;
 use PHPUnit\Framework\TestCase;
 
+
 class UserTest extends TestCase
 {
     public function testUser(){
+
+        $todo = new TODOList();
+        $todo->setOwer(new User());
+
         $user = new User();
         $user->setUsername("CYPT");
         $user->setEmail("contact@cyprientaib.com");
         $user->setPassword("password");
+        $user->addTODOList($todo);
 
         $userRepository = $this->createMock(ObjectRepository::class);
         $userRepository->expects($this->any())
@@ -31,6 +38,8 @@ class UserTest extends TestCase
         $this->assertEquals("contact@cyprientaib.com", $user->getEmail());
 
         $this->assertEquals("password", $user->getPassword());
+
+        $this->assertEquals($user, $user->removeTODOList($todo));
 
 
 

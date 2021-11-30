@@ -21,8 +21,9 @@ class IndexController extends AbstractController
      */
     public function index(): Response
     {
+        $user = $this->getUser();
         return $this->render('vue/index.html.twig', [
-            'controller_name' => 'VueController',
+            'TODOLists' => $user == null? []: $user->getTODOLists(),
         ]);
     }
 }

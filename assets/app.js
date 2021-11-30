@@ -26,7 +26,13 @@ new Vue({
     vuetify,
     components: {
         Home,
-        navbar
+        
     },
 
 }).$mount('#app')
+
+new Vue({vuetify,
+    components: {
+    navbar
+    }
+}).$mount('#navItem')
