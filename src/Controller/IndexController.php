@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class IndexController extends AbstractController
 {
+   
     #[Route('/', name: 'home')]
     public function home(): Response
     {
@@ -16,14 +17,5 @@ class IndexController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/TODO/{route}", requirements={"route"=".*"}, name="vue")
-     */
-    public function index(): Response
-    {
-        $user = $this->getUser();
-        return $this->render('vue/index.html.twig', [
-            'TODOLists' => $user == null? []: $user->getTODOLists(),
-        ]);
-    }
+    
 }
