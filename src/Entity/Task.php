@@ -32,6 +32,11 @@ class Task
      */
     private $tODOList;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $status;
+
     
     public function getId(): ?int
     {
@@ -70,6 +75,18 @@ class Task
     public function setTODOList(?TODOList $tODOList): self
     {
         $this->tODOList = $tODOList;
+
+        return $this;
+    }
+
+    public function getStatus(): ?int
+    {
+        return $this->status;
+    }
+
+    public function setStatus(int $status): self
+    {
+        $this->status = $status;
 
         return $this;
     }
