@@ -53,6 +53,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $isVerified = false;
 
+    /**
+     * @ORM\Column(type="array", nullable=true)
+     */
+    private $transactions = [];
+
 
     public function getId(): ?int
     {
@@ -156,6 +161,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setDeliveryAdress(string $delivery_adress): self
     {
         $this->delivery_adress = $delivery_adress;
+
+        return $this;
+    }
+
+    public function getTransactions(): ?array
+    {
+        return $this->transactions;
+    }
+
+    public function setTransactions(?array $transactions): self
+    {
+        $this->transactions = $transactions;
 
         return $this;
     }
