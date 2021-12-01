@@ -31,7 +31,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="json")
      */
     private $roles = [];
+    
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $billing_adress;
 
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $delivery_adress;
+    
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
@@ -43,15 +53,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $isVerified = false;
 
-    /**
-     * @ORM\Column(type="string", length=100)
-     */
-    private $billing_adress;
-
-    /**
-     * @ORM\Column(type="string", length=100)
-     */
-    private $delivery_adress;
 
     public function getId(): ?int
     {
