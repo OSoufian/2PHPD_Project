@@ -35,6 +35,7 @@ class IndexController extends AbstractController
     
     public function FunctionName(): Response
     {
+        $users = $this->getDoctrine()->getUser();
         return $this->render('admin/index.html.twig', []);
     }
 
