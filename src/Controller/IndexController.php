@@ -2,15 +2,14 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 
 
-class IndexController extends AbstractController
+class IndexController  extends AbstractController 
 {
 
     /**
@@ -33,10 +32,13 @@ class IndexController extends AbstractController
 
     #[Route('/admin', name:"admin")]
     
-    public function FunctionName(): Response
+    public function FunctionName(UserRepository $userRepository): Response
     {
-        $users = $this->getDoctrine()->getUser();
-        return $this->render('admin/index.html.twig', []);
+        $userHistorics = $userRepository->getAllUsers();
+        
+        return $this->render('admin/index.html.twig', [
+            "data" => $userHistorics
+        ]);
     }
 
     
