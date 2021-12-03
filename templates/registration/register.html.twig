@@ -2,19 +2,47 @@
 
 {% block title %}Register{% endblock %}
 
-{% block body %}
-    <h1>Register</h1>
+{% block stylesheets %}
+<style >
+#Register {
+    width: 60vw;
+    margin-top: 3vh;
+    left: 15%;
+    
+    background: #121212;
+    align-items: center;
+}
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.billing_adress)}}
-        {{ form_row(registrationForm.delivery_adress)}}
-        
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
-
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+</style>
 {% endblock %}
+
+{% block body %}
+    <div class="card d-flex aligns-items-center" id="Register">
+    <h1 style="color:#d6d6d6">Register</h1>
+    <form >
+        {{ form_start(registrationForm) }}
+            <div class="mb-3 ">
+            {{ form_row(registrationForm.email) }}
+            </div>
+            <div class="mb-3">
+            {{ form_row(registrationForm.billing_adress)}}
+            </div>
+            <div class="mb-3">
+            {{ form_row(registrationForm.delivery_adress)}}
+            </div>
+            <div class="mb-3">
+            {{ form_row(registrationForm.plainPassword, {
+                label: 'Password'
+            }) }}
+            </div>
+            <div class="mb-3">
+            {{ form_row(registrationForm.agreeTerms) }}
+            </div>
+            <button type="submit" class="btn btn-primary" >Register</button>
+        {{ form_end(registrationForm) }}
+
+    <form>
+    </div>
+{% endblock %}
+
+

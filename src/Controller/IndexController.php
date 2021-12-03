@@ -12,11 +12,6 @@ use Symfony\Component\Security\Core\Security;
 class IndexController  extends AbstractController 
 {
 
-    /**
-     * @var Security
-     */
-    private $security;
-
     public function __construct(Security $security)
     {
        $this->security = $security;
