@@ -19,7 +19,7 @@
 {% block body %}
     <div class="card d-flex aligns-items-center" id="Register">
     <h1 style="color:#d6d6d6">Register</h1>
-    <form >
+    <form method="POST">
         {{ form_start(registrationForm) }}
             <div class="mb-3 ">
             {{ form_row(registrationForm.email) }}

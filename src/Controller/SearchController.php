@@ -8,10 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class SearchController extends AbstractController
 {
-    /**
-    * @Route('/search', name='search')
-    *
-    */    
+    #[Route('/search', name:'search')]   
     public function index(): Response
     {
         return $this->render('search/index.html.twig', [
