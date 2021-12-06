@@ -4,10 +4,10 @@ namespace App\Tests;
 
 use App\Entity\User;
 use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManager;
 use PHPUnit\Framework\TestCase;
 
 use function PHPUnit\Framework\assertTrue;
-
 class UpdateUserTest extends TestCase
 {
     /**
@@ -24,7 +24,25 @@ class UpdateUserTest extends TestCase
         $user->setDeliveryAddress("Sa Mère");
         $user->setIsVerified(true);
         $this->assertTrue(true);
-        $this->entityManager->persist($user);
-        $this->entityManager->flush();
+        $em = $this->getMockBuilder('\Doctrine\ORM\EntityManager')
+            ->setMethods(array('persist', 'flush'))
+            ->disableOriginalConstructor()
+            ->getMock();
+        $em->expects($this->exactly(1))
+            ->method('persist')
+            ->with(
+                $this->logicalOr(
+                    $this->equalTo($user)
+                )
+            )
+            ->will($this->returnCallback(function($o) {
+                if ($o instanceof User){
+                    $o->setEmail("lounesbehloul111@gmail.com");
+                }
+            }));
+        $em->expects($this->exactly(1))
+            ->method('flush');
+        $em->persist($user);
+        $em->flush();
     }
 }
