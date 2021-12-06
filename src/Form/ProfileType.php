@@ -13,8 +13,8 @@ class ProfileType extends AbstractType
     {
         $builder
             ->add('email')
-            ->add('billing_adress')
-            ->add('delivery_adress')
+            ->add('billing_address')
+            ->add('delivery_address')
             ->add('password')
             // ->add('transactions')
         ;

@@ -29,7 +29,7 @@ class RegistrationFormType extends AbstractType
                     'class' => 'form-control',
                 ],
             ])
-            ->add('billing_adress', null, [
+            ->add('billing_address', null, [
 
                 'label_attr' => [
                     'class' => 'col-md-6',
@@ -38,7 +38,7 @@ class RegistrationFormType extends AbstractType
                     'class' => 'form-control',
                 ],
             ])
-            ->add('delivery_adress', null, [
+            ->add('delivery_address', null, [
                 
                 'label_attr' => [
                     'class' => 'col-md-6',

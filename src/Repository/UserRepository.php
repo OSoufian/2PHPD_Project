@@ -39,13 +39,13 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     /**
      * Used to upgrade (rehash) the user's password automatically over time.
      */
-    public function upgradeBillingAdress(PasswordAuthenticatedUserInterface $user, string $newHashedPassword): void
+    public function upgradeBillingAddress(PasswordAuthenticatedUserInterface $user, string $newHashedPassword): void
     {
         if (!$user instanceof User) {
             throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', \get_class($user)));
         }
 
-        $user->setBillingAdress($newHashedPassword);
+        $user->setBillingAddress($newHashedPassword);
         $this->_em->persist($user);
         $this->_em->flush();
     }
@@ -53,13 +53,13 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     /**
      * Used to upgrade (rehash) the user's password automatically over time.
      */
-    public function upgradeDeliveryAdress(PasswordAuthenticatedUserInterface $user, string $newHashedPassword): void
+    public function upgradeDeliveryAddress(PasswordAuthenticatedUserInterface $user, string $newHashedPassword): void
     {
         if (!$user instanceof User) {
             throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', \get_class($user)));
         }
 
-        $user->setDeliveryAdress($newHashedPassword);
+        $user->setDeliveryAddress($newHashedPassword);
         $this->_em->persist($user);
         $this->_em->flush();
     }

@@ -35,12 +35,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="string", length=100)
      */
-    private $billing_adress;
+    private $billing_address;
 
     /**
      * @ORM\Column(type="string", length=100)
      */
-    private $delivery_adress;
+    private $delivery_address;
     
     /**
      * @var string The hashed password
@@ -141,26 +141,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getBillingAdress(): ?string
+    public function getBillingAddress(): ?string
     {
-        return $this->billing_adress;
+        return $this->billing_address;
     }
 
-    public function setBillingAdress(string $billing_adress): self
+    public function setBillingAddress(string $billing_address): self
     {
-        $this->billing_adress = $billing_adress;
+        $this->billing_address = $billing_address;
 
         return $this;
     }
 
-    public function getDeliveryAdress(): ?string
+    public function getDeliveryAddress(): ?string
     {
-        return $this->delivery_adress;
+        return $this->delivery_address;
     }
 
-    public function setDeliveryAdress(string $delivery_adress): self
+    public function setDeliveryAddress(string $delivery_address): self
     {
-        $this->delivery_adress = $delivery_adress;
+        $this->delivery_address = $delivery_address;
 
         return $this;
     }
