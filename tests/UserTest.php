@@ -18,16 +18,23 @@ class UserTest extends TestCase
      */
     private $entityManager;
 
-    public function testUserCreate(): void
+    private final function user() : User
     {
+
         $user = new User();
         $user->setPassword('$2y$13$aKWWp68ntWO0QNsfLPst9uxHeqqGbo9cN6XQn5skuc5ZMjyXaNui2');
         $user->setEmail("lounesbehloul111@gmail.com");
         $user->setBillingAddress("Ta mère");
         $user->setDeliveryAddress("Sa Mère");
         $user->setIsVerified(true);
-        $this->assertTrue(true);
 
+        return $user;
+    }
+
+    public function testUserCreate(): EntityManager
+    {
+        $user = $this->user();
+        
         $em = $this->getMockBuilder('\Doctrine\ORM\EntityManager')
             ->disableOriginalConstructor()
             ->getMock();
@@ -50,12 +57,16 @@ class UserTest extends TestCase
 
         $em->persist($user);
         $em->flush();
+
+        return $em;
     }
 
     public function testUserEdit(): void
     {
-        $user = new User();
+        $user = $this->user();
         // $this->assertTrue(true);
+
+        $em = $this-testUserCreate();
 
         $ur = $this->getMockBuilder('\App\Repository\UserRepository')
             ->disableOriginalConstructor()
@@ -63,7 +74,9 @@ class UserTest extends TestCase
 
         $ur->expects($this->once())
             ->method('upgradeEmail')
-            ->will($this->returnValue($user->getEmail()));
+            ->will($this->returnValue(
+                
+                $user->getEmail()));
         $ur->upgradeEmail($user, 'moi@toi.com');
         $this->assertEquals(
             $user->getEmail(),
