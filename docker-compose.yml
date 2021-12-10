@@ -28,6 +28,8 @@ services:
     ports:
       - 5050:80
 
+    
+
   maildev:
     image: maildev/maildev
     container_name: maildev_docker_symfony
@@ -46,4 +48,4 @@ networks:
 
 volumes: 
   dbdata: 
-  pgadmin:
+  phpMyadmin:

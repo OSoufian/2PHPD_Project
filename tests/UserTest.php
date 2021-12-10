@@ -39,24 +39,24 @@ class UserTest extends TestCase
             ->disableOriginalConstructor()
             ->getMock();
 
-        $em->expects($this->exactly(1))
-            ->method('persist')
-            ->with(
-                $this->logicalOr(
-                    $this->equalTo($user)
-                )
-            )
-            ->will($this->returnCallback(function($o) {
-                if ($o instanceof User){
-                    $o->setEmail("lounesbehloul111@gmail.com");
-                }
-            }));
+        // $em->expects($this->exactly(1))
+        //     ->method('persist')
+        //     ->with(
+        //         $this->logicalOr(
+        //             $this->equalTo($user)
+        //         )
+        //     )
+        //     ->will($this->returnCallback(function($o) {
+        //         if ($o instanceof User){
+        //             $o->setEmail("lounesbehloul111@gmail.com");
+        //         }
+        //     }));
 
-        $em->expects($this->exactly(1))
-            ->method('flush');
+        // $em->expects($this->exactly(1))
+        //     ->method('flush');
 
-        $em->persist($user);
-        $em->flush();
+        
+
 
         return $em;
     }
@@ -66,7 +66,12 @@ class UserTest extends TestCase
         $user = $this->user();
         // $this->assertTrue(true);
 
-        $em = $this-testUserCreate();
+        $em = $this->testUserCreate();
+        $em->flush($user);
+        $em->persist($user);
+        // $em->close();
+
+        $em->getEventManager();
 
         $ur = $this->getMockBuilder('\App\Repository\UserRepository')
             ->disableOriginalConstructor()
@@ -78,8 +83,10 @@ class UserTest extends TestCase
                 
                 $user->getEmail()));
         $ur->upgradeEmail($user, 'moi@toi.com');
+
         $this->assertEquals(
-            $user->getEmail(),
+            $em->get_current_user()->getEmail(),
+            
             'moi@toi.com',
         );
     }
