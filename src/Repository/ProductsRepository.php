@@ -25,10 +25,11 @@ class ProductsRepository extends ServiceEntityRepository
     
     public function getAll()
     {
-        return $this->createQueryBuilder('p')
-            ->getQuery()
-            ->getResult()
-        ;
+        // return $this->createQueryBuilder('p')
+        //     ->getQuery()
+        //     ->getResult()
+        // ;
+        return $this->findAll();
     }
     
 

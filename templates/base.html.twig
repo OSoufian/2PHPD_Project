@@ -60,10 +60,9 @@
     </body>
     <script>
         document.forms["search"].onsubmit = () => {
-            var content = document.getElementById("SearchContent").value
-            if(content == '') return
-            alert("/search?q=" + content)
-            
+            var content = document.getElementById("SearchContent").value;
+            if(content == '') return;
+            window.location.href += "search?search=toto";
         }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
