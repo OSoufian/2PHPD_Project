@@ -14,7 +14,7 @@ class CartController extends AbstractController
     public function index(SessionInterface $session): Response
     {
         return $this->render('cart/index.html.twig', [
-            'cart' => '$session->get("cart");',
+            'cart' => $session->get("cart"),
         ]);
     }
 
