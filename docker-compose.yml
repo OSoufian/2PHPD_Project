@@ -1,7 +1,6 @@
-version: '3.5' 
+version: '3.5'
 
-
-services: 
+services:
 
   db:
     image: mysql:5.7
@@ -28,8 +27,6 @@ services:
     ports:
       - 5050:80
 
-    
-
   maildev:
     image: maildev/maildev
     container_name: maildev_docker_symfony
@@ -38,14 +35,12 @@ services:
       - "6977:80"
     restart: always
     networks:
-        - symfony
+      - symfony
 
+networks:
+  symfony:
+    driver: bridge
 
-networks: 
-  symfony: 
-    driver: 
-      bridge 
-
-volumes: 
-  dbdata: 
-  phpMyadmin:
+volumes:
+  dbdata: null
+  phpMyadmin: null
