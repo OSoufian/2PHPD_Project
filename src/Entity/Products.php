@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProductsRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -38,9 +40,14 @@ class Products
     private $description;
 
     /**
-     * @ORM\Column(type="array", nullable=true)
+     * @ORM\ManyToMany(targetEntity=Categories::class, inversedBy="products")
      */
-    private $categories = [];
+    private $categories;
+
+    public function __construct()
+    {
+        $this->categories = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -95,15 +102,28 @@ class Products
         return $this;
     }
 
-    public function getCategories(): ?array
+    /**
+     * @return Collection|Categories[]
+     */
+    public function getCategories(): Collection
     {
         return $this->categories;
     }
 
-    public function setCategories(array $categories): self
+    public function addCategory(Categories $category): self
     {
-        $this->categories = $categories;
+        if (!$this->categories->contains($category)) {
+            $this->categories[] = $category;
+        }
 
         return $this;
     }
+
+    public function removeCategory(Categories $category): self
+    {
+        $this->categories->removeElement($category);
+
+        return $this;
+    }
+
 }
