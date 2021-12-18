@@ -8,13 +8,11 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 
-
-class IndexController  extends AbstractController 
+class IndexController extends AbstractController
 {
-
     public function __construct(Security $security)
     {
-       $this->security = $security;
+        $this->security = $security;
     }
 
     #[Route('/', name: 'index')]
@@ -26,15 +24,13 @@ class IndexController  extends AbstractController
     }
 
     #[Route('/admin', name:"admin")]
-    
+
     public function FunctionName(UserRepository $userRepository): Response
     {
         $userHistorics = $userRepository->getAllUsers();
-        
+
         return $this->render('admin/index.html.twig', [
             "data" => $userHistorics
         ]);
     }
-
-    
 }

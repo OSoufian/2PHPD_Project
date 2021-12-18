@@ -22,7 +22,7 @@ class ProductsRepository extends ServiceEntityRepository
     /**
      * @return Products[] Returns an array of Products objects
      */
-    
+
     public function getAll(): array
     {
         // return $this->createQueryBuilder('p')
@@ -31,7 +31,7 @@ class ProductsRepository extends ServiceEntityRepository
         // ;
         return $this->findAll();
     }
-    
+
 
     /*
     public function findOneBySomeField($value): ?Products

@@ -23,8 +23,6 @@ class ProductsController extends AbstractController
         return $this->render('products/index.html.twig', [
             'products' => $products,
         ]);
-
-
     }
 
     // #[Route('/products/add', name: 'products_add')]
@@ -39,7 +37,7 @@ class ProductsController extends AbstractController
     //         $entityManager->persist($product);
     //         $entityManager->flush();
     //     }
-        
+
     //     return $this->render('products/add.html.twig', [
     //         'productsForm' => $form->createView(),
     //     ]);

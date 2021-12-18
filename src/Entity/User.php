@@ -31,7 +31,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="json")
      */
     private $roles = [];
-    
+
     /**
      * @ORM\Column(type="string", length=100)
      */
@@ -41,7 +41,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string", length=100)
      */
     private $delivery_address;
-    
+
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
