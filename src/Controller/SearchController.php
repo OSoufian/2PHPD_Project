@@ -9,10 +9,9 @@ use Symfony\Component\HttpFoundation\Request;
 
 class SearchController extends AbstractController
 {
-    #[Route('/search', name:'search')]   
+    #[Route('/search', name:'search')]
     public function index(Request $request): Response
     {
-
         dump($request->query->get('search'));
 
 

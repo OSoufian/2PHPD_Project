@@ -100,7 +100,7 @@ class Products
 
     public function displayImage()
     {
-        if(null === $this->rawImage) {
+        if (null === $this->rawImage) {
             $this->rawImage = "data:image/png;base64," . base64_encode(stream_get_contents($this->getImage()));
         }
 
@@ -142,5 +142,4 @@ class Products
 
         return $this;
     }
-
 }
