@@ -34,7 +34,5 @@ class IndexController  extends AbstractController
         return $this->render('admin/index.html.twig', [
             "data" => $userHistorics
         ]);
-    }
-
-    
+    }   
 }

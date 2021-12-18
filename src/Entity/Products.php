@@ -119,7 +119,7 @@ class Products
         return $this;
     }
 
-    public function getCategories(): ?array
+    public function getCategories(): ?ArrayCollection
     {
         return $this->categories;
     }
