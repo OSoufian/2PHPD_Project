@@ -18,7 +18,7 @@ class ProductsController extends AbstractController
     {
         $products = $productsRepository->getAll();
 
-        dd($products);
+        // dd($products);
 
         return $this->render('products/index.html.twig', [
             'products' => $products,

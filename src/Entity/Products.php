@@ -34,6 +34,8 @@ class Products
      */
     private $image;
 
+    private $rawImage;
+
     /**
      * @ORM\Column(type="text", nullable=true)
      */
@@ -43,6 +45,11 @@ class Products
      * @ORM\Column(type="array", nullable=true)
      */
     private $categories = [];
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $brand;
 
 
     public function __construct()
@@ -91,6 +98,15 @@ class Products
         return $this;
     }
 
+    public function displayImage()
+    {
+        if(null === $this->rawImage) {
+            $this->rawImage = "data:image/png;base64," . base64_encode(stream_get_contents($this->getImage()));
+        }
+
+        return $this->rawImage;
+    }
+
     public function getDescription(): ?string
     {
         return $this->description;
@@ -111,6 +127,18 @@ class Products
     public function setCategories(array $categories): self
     {
         $this->categories = $categories;
+
+        return $this;
+    }
+
+    public function getBrand(): ?string
+    {
+        return $this->brand;
+    }
+
+    public function setBrand(string $brand): self
+    {
+        $this->brand = $brand;
 
         return $this;
     }

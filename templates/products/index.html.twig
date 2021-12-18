@@ -6,28 +6,32 @@
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    #main-content {
+        display: flex;
+        flex-direction: row;
+    }
+
+    #product-block {
+        margin: 10%;
+        border: 1px solid white;
+        text-align: center;
+        width: 20vw;
+    }
+
+    #product-block img {
+        margin-top: 3px;
+        width: 20vw;
+        height: auto;
+    }
+
+    #product-block h2 {
+        text-align: left;
+        font-size: 20px;
+    }
+    
 </style>
 
-{# <div class="example-wrapper">
-    {% for product in products %}
-        <div class="card" style="width: 18rem;">
-            <img src={{ product.image }} class="card-img-top">
-            <div class="card-body">
-                <h5 class="card-title">{{ product.title }}</h5>
-                <p class="card-text">{{product.description}}</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-            <div class="card-body ">
-
-                <p class="card-text">{{product.price}}</p>
-            </div>
-        </div>
-        
-    {% endfor %}
-</div> #}
-
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
 
     {# This friendly message is coming from:
     <ul>
@@ -35,8 +39,17 @@
         <li>Your template at <code><a href="{{ 'C:/Users/osouf/OneDrive/Documents/Scolarité/SUPINFO/ASC2/2PHPD - PHP Developer/Projet/2PHPD/templates/products/index.html.twig'|file_link(0) }}">templates/products/index.html.twig</a></code></li>
     </ul> #}
 
-    {% for product in products %}
-        {% include 'products/products.html.twig' with {product: product} only %}
-    {% endfor %}
+    
+        <div id="main-content">
+        {% for product in products %}
+            <div id="product-block">
+                <img src="{{ product.displayImage }}" alt="">
+                <h2>{{ product.name }}</h2>            
+                <p> {{ product.price }} €</p>
+                <p>{{ product.description }}</p>
+            </div>
+        {% endfor %}               
+        </div>
+    
 </div>
 {% endblock %}
