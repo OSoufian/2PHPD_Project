@@ -36,7 +36,8 @@
     </ul> #}
 
     {% for product in products %}
-    
+        {% include 'products/products.html.twig' with {product: product} only %}
+
     {% endfor %}
 </div>
 {% endblock %}
