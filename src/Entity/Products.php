@@ -40,9 +40,10 @@ class Products
     private $description;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Categories::class, inversedBy="products")
+     * @ORM\Column(type="array", nullable=true)
      */
-    private $categories;
+    private $categories = [];
+
 
     public function __construct()
     {
@@ -102,26 +103,14 @@ class Products
         return $this;
     }
 
-    /**
-     * @return Collection|Categories[]
-     */
-    public function getCategories(): Collection
+    public function getCategories(): ?array
     {
         return $this->categories;
     }
 
-    public function addCategory(Categories $category): self
+    public function setCategories(array $categories): self
     {
-        if (!$this->categories->contains($category)) {
-            $this->categories[] = $category;
-        }
-
-        return $this;
-    }
-
-    public function removeCategory(Categories $category): self
-    {
-        $this->categories->removeElement($category);
+        $this->categories = $categories;
 
         return $this;
     }
