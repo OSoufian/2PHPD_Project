@@ -10,6 +10,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Products|null find($id, $lockMode = null, $lockVersion = null)
  * @method Products|null findOneBy(array $criteria, array $orderBy = null)
  * @method Products[]    findAll()
+ * @method Products[]    findOneBySomeField(string $value)
  * @method Products[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class ProductsRepository extends ServiceEntityRepository
@@ -33,15 +34,12 @@ class ProductsRepository extends ServiceEntityRepository
     }
 
 
-    /*
     public function findOneBySomeField($value): ?Products
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
+            ->andWhere('p.name = :val')
             ->setParameter('val', $value)
             ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            ->getOneOrNullResult();
     }
-    */
 }

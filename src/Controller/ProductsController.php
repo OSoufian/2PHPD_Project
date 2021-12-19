@@ -18,29 +18,8 @@ class ProductsController extends AbstractController
     {
         $products = $productsRepository->getAll();
 
-        // dd($products);
-
         return $this->render('products/index.html.twig', [
             'products' => $products,
         ]);
     }
-
-    // #[Route('/products/add', name: 'products_add')]
-    // public function add(Request $request, EntityManager $entityManager): Response
-    // {
-
-    //     $product = new Products();
-    //     $form = $this->createForm(AddProductsType::class, $product);
-    //     $form->handleRequest($request);
-
-    //     if ($form->isSubmitted() && $form->isValid()) {
-    //         $entityManager->persist($product);
-    //         $entityManager->flush();
-    //     }
-
-    //     return $this->render('products/add.html.twig', [
-    //         'productsForm' => $form->createView(),
-    //     ]);
-
-    // }
 }
