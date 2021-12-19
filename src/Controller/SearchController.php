@@ -13,11 +13,10 @@ class SearchController extends AbstractController
     #[Route('/search', name: 'search')]
     public function index(Request $request, ProductsRepository $productsRepository): Response
     {
-        $productRepository->findOneBySomeField($request->query->get('q'));
+        $products = $productsRepository->findOneBySomeField($request->query->get('q'));
 
-
-        return $this->render('search/index.html.twig', [
-            'controller_name' => 'SearchController',
+        return $this->render('products/index.html.twig', [
+            'products' => $products,
         ]);
     }
 }

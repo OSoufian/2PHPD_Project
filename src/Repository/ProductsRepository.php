@@ -34,12 +34,12 @@ class ProductsRepository extends ServiceEntityRepository
     }
 
 
-    public function findOneBySomeField($value): ?Products
+    public function findOneBySomeField($value): ?array
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.name = :val')
-            ->setParameter('val', $value)
+            ->andWhere('p.name LIKE :val')
+            ->setParameter('val', "%".$value."%")
             ->getQuery()
-            ->getOneOrNullResult();
+            ->getResult();
     }
 }
