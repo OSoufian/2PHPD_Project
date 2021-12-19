@@ -50,7 +50,7 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						<li class="nav-item">
-							<a class="nav-link" href="products">products</a>
+							<a class="nav-link" href="/products">products</a>
 						</li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -59,24 +59,24 @@
 							<ul class="dropdown-menu dropdown-menu-dark add-shadow" aria-labelledby="navbarDarkDropdownMenuLink">
 								{% if app.user %}
 									<li>
-										<a class="dropdown-item" href="logout">logout</a>
+										<a class="dropdown-item" href="/logout">logout</a>
 									</li>
 									<li>
-										<a class="dropdown-item" href="profile">edit</a>
+										<a class="dropdown-item" href="/profile">edit</a>
 									</li>
 
 									{% if "ROLE_ADMIN"  in app.user.getRoles()%}
 
 										<li>
-											<a class="dropdown-item" href="admin">admin panel</a>
+											<a class="dropdown-item" href="/admin">admin panel</a>
 										</li>
 									{% endif %}
 								{% else %}
 									<li>
-										<a class="dropdown-item" href="login">login</a>
+										<a class="dropdown-item" href="/login">login</a>
 									</li>
 									<li>
-										<a class="dropdown-item" href="register">register</a>
+										<a class="dropdown-item" href="/register">register</a>
 									</li>
 
 								{% endif %}
@@ -105,8 +105,8 @@
 			if(event.keyCode == 13)
 			{
 				var content = document.getElementById("SearchContent").value;
-				if(content == "") content = "all"
-				document.location.replace("/search/"+content)
+				if(content == "") {content = "all";}
+				document.location.replace("/search/"+content);
 			}
 				
 		})
