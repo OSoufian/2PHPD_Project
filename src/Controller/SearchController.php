@@ -10,10 +10,11 @@ use Symfony\Component\HttpFoundation\Request;
 
 class SearchController extends AbstractController
 {
-    #[Route('/search', name: 'search')]
-    public function index(Request $request, ProductsRepository $productsRepository): Response
-    {
-        $products = $productsRepository->findOneBySomeField($request->query->get('q'));
+    #[Route('/search/{product}', name: 'search')]
+    public function search(string $product, ProductsRepository $productsRepository): Response
+    {   
+        if($product == "all") $products = $productsRepository->getAll();
+        $products = $productsRepository->findOneBySomeField($product);
 
         return $this->render('products/index.html.twig', [
             'products' => $products,

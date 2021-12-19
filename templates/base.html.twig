@@ -97,6 +97,7 @@
 		<input type="button" class=" btn-floating btn-lg" id="btn-back-to-top" value="▲"></body>
 	</body>
 	<script type="text/javascript">
+
 		document.getElementById("SearchContent").addEventListener("keydown", (event) => {
 			if (event.defaultPrevented) {
 				return; // Should do nothing if the default action has been cancelled
@@ -104,8 +105,8 @@
 			if(event.keyCode == 13)
 			{
 				var content = document.getElementById("SearchContent").value;
-								
-				window.open("/search?q=" + content);
+				if(content == "") content = "all"
+				document.location.replace("/search/"+content)
 			}
 				
 		})
@@ -131,9 +132,6 @@
 			document.body.scrollTop = 0;
 			document.documentElement.scrollTop = 0;
 		}
-
-
-		
 
 		window.addEventListener('scroll', (e) => {
 		const nav = document.querySelector('.navbar');
