@@ -42,15 +42,14 @@ class Products
     private $description;
 
     /**
-     * @ORM\Column(type="array", nullable=true)
-     */
-    private $categories = [];
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
     private $brand;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Categories::class, mappedBy="Products")
+     */
+    private $categories;
 
     public function __construct()
     {
@@ -119,18 +118,6 @@ class Products
         return $this;
     }
 
-    public function getCategories(): ?ArrayCollection
-    {
-        return $this->categories;
-    }
-
-    public function setCategories(array $categories): self
-    {
-        $this->categories = $categories;
-
-        return $this;
-    }
-
     public function getBrand(): ?string
     {
         return $this->brand;
@@ -139,6 +126,33 @@ class Products
     public function setBrand(string $brand): self
     {
         $this->brand = $brand;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Categories[]
+     */
+    public function getCategories(): Collection
+    {
+        return $this->categories;
+    }
+
+    public function addCategory(Categories $category): self
+    {
+        if (!$this->categories->contains($category)) {
+            $this->categories[] = $category;
+            $category->addProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Categories $category): self
+    {
+        if ($this->categories->removeElement($category)) {
+            $category->removeProduct($this);
+        }
 
         return $this;
     }
