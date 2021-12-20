@@ -37,8 +37,19 @@ class ProductsRepository extends ServiceEntityRepository
     public function findOneBySomeField($value): ?array
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.name LIKE :val')
+            ->where('p.name LIKE :val')
             ->setParameter('val', "%".$value."%")
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findOneByCategory($value): ?array
+    {
+        return $this->createQueryBuilder('p')
+            ->select('c', 'p')
+            ->join('p.categories', 'c')
+            ->where('c.id IN (:categories)')
+            ->setParameter('categories', $value->categories)
             ->getQuery()
             ->getResult();
     }

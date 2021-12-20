@@ -105,8 +105,9 @@
 			if(event.keyCode == 13)
 			{
 				var content = document.getElementById("SearchContent").value;
-				if(content == "") {content = "all";}
-				document.location.replace("/search/"+content);
+				// if(content == "") {content = "all";}
+				// document.location.replace("/search/"+content);
+				window.open("/search/"+content)
 			}
 				
 		})
