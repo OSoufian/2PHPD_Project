@@ -22,10 +22,6 @@ class ProductsRepository extends ServiceEntityRepository
 
     public function getAll(): array
     {
-        // return $this->createQueryBuilder('p')
-        //     ->getQuery()
-        //     ->getResult()
-        // ;
         return $this->findAll();
     }
 
@@ -36,17 +32,17 @@ class ProductsRepository extends ServiceEntityRepository
             ->where('p.name LIKE :val')
             ->setParameter('val', "%" . $value . "%")
             ->getQuery()
-            ->getResult();            
+            ->getResult(); 
     }
 
-    // public function findById($value): ?array
-    // {
-    //     return $this->createQueryBuilder('p')
-    //         ->where('p.name = :val')
-    //         ->setParameter('val', $value)
-    //         ->getQuery()
-    //         ->getResult();            
-    // }
+    public function findById($value): ?array
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.id = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getResult();            
+    }
 
     public function findOneBySomeField($value): ?array
     {
