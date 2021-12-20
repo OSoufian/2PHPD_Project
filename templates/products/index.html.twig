@@ -1,101 +1,100 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}All Products!{% endblock %}
+{% block title %}All Products!
+{% endblock %}
 
 {% block body %}
-<style>
-    
-        
-        .product-grid
-        {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr;
-            grid-gap: 20px;
-            margin-top: 0vh;
-            margin-right: 5vh;
-            margin-left: 4vh;
-        }
-        .width img {
-            width: 100%;
-            height: auto;
-            transition: transform .1s;
-        }
-
-        .width:hover
-        {
-            transform: scale(1.1);
-            margin-top: 2vh;
-        }
-
-        .width 
-        {
-            
-            border: 1px solid gray;
-            text-align: center;
-            padding: 5px;
-            background: #121212;
-            color: #C4C4C4;
-            box-shadow: rgb(8 8 8 / 77%) 0px 10px 10px 0px;
-
-            height: auto;    
-        }
-
-        #jeans-buttons,
-        #sneakers-buttons {            
-            color: white;
-            background: black;
-            margin-top: 3vh;
-            height: 6vh;
-            width: auto;
-            margin-right: 2vh;
-        }
+	<style>
 
 
-        #buttons {
-            margin-left: 4vh;
-            margin-bottom: 3vh;
-        }
-            
-        </style>
+		.product-grid {
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr 1fr;
+			grid-gap: 20px;
+			margin-top: 0;
+			margin-right: 5vh;
+			margin-left: 4vh;
+		}
+		.width img {
+			width: 100%;
+			height: auto;
+			transition: transform 0.1s;
+		}
 
-        <div id="buttons">
-            <button id="jeans-buttons" onclick="openJeansTab()">Jeans</button>
-            <button id="sneakers-buttons">Chaussures</button>
-        </div>
+		.width:hover {
+			transform: scale(1.1);
+			margin-top: 2vh;
+		}
 
-        
-        
-        <div class="product-grid">       
-        
-        
-        {% for product in products %}
-        <div class="width">
-                <img src="{{ product.displayImage }}" alt="">
-                <h2>{{ product.brand }}</h2>
-                <p>{{ product.name }}</p>   
-                <p> {{ product.price }} €</p>
-            </div>
-        {% endfor %}    
-        
-        {% for product in products %}
-        <div class="width">
-                <img src="{{ product.displayImage }}" alt="">
-                <h4>{{ product.brand }}</h4>
-                <p>{{ product.name }}</p>   
-                <buton click="alert({{ product.id }})"></buton>
-                <p> {{ product.price }} €</p>
-            </div>
-        {% endfor %}
+		.width {
+			cursor: pointer;
+			border: 1px solid gray;
+			text-align: center;
+			padding: 5px;
+			background: #121212;
+			color: #C4C4C4;
+			box-shadow: rgb(8 8 8 / 77%) 0 10px 10px 0;
 
-        <script>
+			height: auto;
+		}
 
-            function openJeansTab() {
-                window.open("/categories/jeans")
-            } 
+		#jeans-buttons,
+		#sneakers-buttons {
+			color: white;
+			background: black;
+			margin-top: 3vh;
+			height: 6vh;
+			width: auto;
+			margin-right: 2vh;
+		}
 
-        </script>
 
-        
-</div>
-    
+		#buttons {
+			margin-left: 4vh;
+			margin-bottom: 3vh;
+		}
+	</style>
+
+	<div id="buttons">
+		<button id="jeans-buttons" onclick="openJeansTab()">Jeans</button>
+		<button id="sneakers-buttons">Chaussures</button>
+	</div>
+
+
+	<div class="product-grid">
+
+
+		{% for product in products %}
+			<div class="width" onclick="window.location.href = '/product/'+{{product.id}}">
+				<img src="{{ product.displayImage }}" alt="">
+				<h2>{{ product.brand }}</h2>
+				<p>{{ product.name }}</p>
+				<p>
+					{{ product.price }}
+					€</p>
+			</div>
+		{% endfor %}
+
+		{% for product in products %}
+			<div class="width" onclick="window.location.href = '/product/'+{{product.id}}">
+				<img src="{{ product.displayImage }}" alt="">
+				<h4>{{ product.brand }}</h4>
+				<p>{{ product.name }}</p>
+				<buton click="alert({{ product.id }})"></buton>
+				<p>
+					{{ product.price }}
+					€</p>
+			</div>
+		{% endfor %}
+
+		<script>
+
+			function openJeansTab() {
+window.open("/search/categories/jeans")
+}
+		</script>
+
+
+	</div>
+
 {% endblock %}

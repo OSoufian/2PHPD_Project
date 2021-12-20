@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+	<div class="width">
+		<img src="{{ product.displayImage }}" alt="">
+		<h2>{{ product.brand }}</h2>
+		<p>{{ product.name }}</p>
+		<p>
+			{{ product.price }}€</p>
+
+	</div>
+
+{% endblock %}
+
+<style>
+	.width {
+		left: 30vw;
+		padding: 15%;
+		display: flex;
+		justify-items: center;
+		align-items: center
+	}
+
+	img {
+		width: auto;
+		height: 10vh;
+	}
+</style>

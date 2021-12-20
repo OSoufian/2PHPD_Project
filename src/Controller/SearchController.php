@@ -14,7 +14,7 @@ class SearchController extends AbstractController
     public function search(string $product, ProductsRepository $productsRepository): Response
     {   
         if($product == "all") $products = $productsRepository->getAll();
-        $products = $productsRepository->findOneBySomeField($product);
+        $products = $productsRepository->findBySearch($product);
 
         return $this->render('products/index.html.twig', [
             'products' => $products,
@@ -25,7 +25,7 @@ class SearchController extends AbstractController
     public function searchCategory(string $product, ProductsRepository $productsRepository): Response
     {   
         if($product == "all") $products = $productsRepository->getAll();
-        $products = $productsRepository->findOneBySomeField($product);
+        $products = $productsRepository->findOneByCategory($product);
 
         return $this->render('products/index.html.twig', [
             'products' => $products,

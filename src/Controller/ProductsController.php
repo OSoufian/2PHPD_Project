@@ -22,4 +22,15 @@ class ProductsController extends AbstractController
             'products' => $products,
         ]);
     }
+
+    #[Route('/product/{product}', name: 'product')]
+    public function productById(string $id, ProductsRepository $productsRepository): Response
+    {
+        // if ($product == "all") $products = $productsRepository->getAll();
+        $product = $productsRepository->findById($id);
+
+        return $this->render('products/view.html.twig', [
+            'product' => $product,
+        ]);
+    }
 }

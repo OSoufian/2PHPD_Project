@@ -6,7 +6,7 @@ use App\Entity\Products;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
-/**
+/** 
  * @method Products|null find($id, $lockMode = null, $lockVersion = null)
  * @method Products|null findOneBy(array $criteria, array $orderBy = null)
  * @method Products[]    findAll()
@@ -20,10 +20,6 @@ class ProductsRepository extends ServiceEntityRepository
         parent::__construct($registry, Products::class);
     }
 
-    /**
-     * @return Products[] Returns an array of Products objects
-     */
-
     public function getAll(): array
     {
         // return $this->createQueryBuilder('p')
@@ -34,23 +30,42 @@ class ProductsRepository extends ServiceEntityRepository
     }
 
 
+    public function findBySearch($value): ?array
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.name LIKE :val')
+            ->setParameter('val', "%" . $value . "%")
+            ->getQuery()
+            ->getResult();            
+    }
+
+    // public function findById($value): ?array
+    // {
+    //     return $this->createQueryBuilder('p')
+    //         ->where('p.name = :val')
+    //         ->setParameter('val', $value)
+    //         ->getQuery()
+    //         ->getResult();            
+    // }
+
     public function findOneBySomeField($value): ?array
     {
         return $this->createQueryBuilder('p')
             ->where('p.name LIKE :val')
-            ->setParameter('val', "%".$value."%")
+            ->setParameter('val', "%" . $value . "%")
             ->getQuery()
-            ->getResult();
+            ->getResult();            
     }
 
-    public function findOneByCategory($value): ?array
+    public function findOneByCategory($val): ?array
     {
         return $this->createQueryBuilder('p')
-            ->select('c', 'p')
-            ->join('p.categories', 'c')
-            ->where('c.id IN (:categories)')
-            ->setParameter('categories', $value->categories)
+            // ->join('categories_products', 'c_p', 'WITH', 'p.id=c_p.products_id')
+            ->join('App\Entity\Categories', 'c')
+            ->where("c.Name = :val")
+            ->setParameter('val', $val)
             ->getQuery()
             ->getResult();
     }
 }
+{{  }}
