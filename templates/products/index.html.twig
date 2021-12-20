@@ -46,6 +46,7 @@
 			height: 6vh;
 			width: auto;
 			margin-right: 2vh;
+			text-decoration: none;
 		}
 
 
@@ -56,8 +57,10 @@
 	</style>
 
 	<div id="buttons">
-		<button id="jeans-buttons" onclick="openJeansTab()">Jeans</button>
-		<button id="sneakers-buttons">Chaussures</button>
+
+		{% for categorie in categories %}
+			<a id="jeans-buttons" class="btn btn-primary btn-lg active" href="/search/categories/{{categorie.Name}}" class="button">{{categorie.Name}}</a>
+		{% endfor %}
 	</div>
 
 
@@ -68,33 +71,31 @@
 			<div class="width" onclick="window.location.href = '/product/'+{{product.id}}">
 				<img src="{{ product.displayImage }}" alt="">
 				<h2>{{ product.brand }}</h2>
-				<p>{{ product.name }}</p>
-				<p>
-					{{ product.price }}
-					€</p>
-			</div>
-		{% endfor %}
+			<p>{{ product.name }}</p>
+			<p>
+				{{ product.price }}
+				€</p>
+		</div>
+	{% endfor %}
 
-		{% for product in products %}
-			<div class="width" onclick="window.location.href = '/product/'+{{product.id}}">
-				<img src="{{ product.displayImage }}" alt="">
-				<h4>{{ product.brand }}</h4>
-				<p>{{ product.name }}</p>
-				<buton click="alert({{ product.id }})"></buton>
-				<p>
-					{{ product.price }}
-					€</p>
-			</div>
-		{% endfor %}
+	{% for product in products %}
+		<div class="width" onclick="window.location.href = '/product/'+{{product.id}}">
+			<img src="{{ product.displayImage }}" alt="">
+			<h4>{{ product.brand }}</h4>
+			<p>{{ product.name }}</p>
+			<buton click="alert({{ product.id }})"></buton>
+			<p>
+				{{ product.price }}
+				€</p>
+		</div>
+	{% endfor %}
 
-		<script>
+	<script>
 
-			function openJeansTab() {
-window.open("/search/categories/jeans")
-}
-		</script>
+		function openJeansTab(categorie) {
+			window.location.replace(`search/categories/${categorie}`);
+		}
+	</script>
 
 
-	</div>
-
-{% endblock %}
+</div>{% endblock %}
