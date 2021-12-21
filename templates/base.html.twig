@@ -98,8 +98,10 @@
 	</body>
 	<script type="text/javascript">
 
-		document.getElementById("SearchIntput").addEventListener("keydown", () => {
+		document.getElementById("SearchIntput").addEventListener("keyup", (key) => {
+
 			document.getElementById("SearchTest").href="/search/" + document.getElementById("SearchIntput").value
+			if(key.keyCode == 13) document.getElementById("SearchTest").click()
 		})
 
 		let mybutton = document.getElementById("btn-back-to-top");

@@ -23,11 +23,11 @@ class SearchController extends AbstractController
         ]);
     }
 
-    #[Route('/search/categories/{product}', name: 'searchCategory')]
-    public function searchCategory(string $product, ProductsRepository $productsRepository,  CategoriesRepository $categoriesRepository): Response
+    #[Route('/search/categories/{categorie}', name: 'searchCategory')]
+    public function searchCategory(string $categorie, ProductsRepository $productsRepository,  CategoriesRepository $categoriesRepository): Response
     {   
-        if($product == "all") $products = $productsRepository->getAll();
-        $products = $productsRepository->findOneByCategory($product);
+        if($categorie == "all") $products = $productsRepository->getAll();
+        $products = $categoriesRepository->findOneByName($categorie)->getProducts();
 
         return $this->render('products/index.html.twig', [
             'products' => $products,

@@ -52,16 +52,4 @@ class ProductsRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();            
     }
-
-    public function findOneByCategory($val): ?array
-    {
-        return $this->createQueryBuilder('p')
-            // ->join('categories_products', 'c_p', 'WITH', 'p.id=c_p.products_id')
-            ->join('App\Entity\Categories', 'c')
-            ->where("c.Name = :val")
-            ->setParameter('val', $val)
-            ->getQuery()
-            ->getResult();
-    }
 }
-{{  }}
