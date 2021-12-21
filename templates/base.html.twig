@@ -85,9 +85,8 @@
 
 					</ul>
 					<form class="d-flex" id="search">
-						{# <input class="form-control form-control-sm mr-sm-2" type="search" placeholder="Code postal..." aria-label="Search"> #}
-						{# <button class="btn btn-outline-primary btn-sm my-2 my-sm-0" type="submit">Search</button> #}
-						{# <a href="{{ path('search', {'product': 4}) }}"> <i class="fa fa-search"></i> {{ 'menu.search'|trans }}</a> #}
+						<input class="form-control form-control-sm mr-sm-2" type="search" placeholder="products" aria-label="Search" id="SearchIntput">
+						<a id="SearchTest" type="button" class="btn btn-primary btn-lg active"> search</a>
 					</form>
 				</div>
 			</div>
@@ -99,10 +98,8 @@
 	</body>
 	<script type="text/javascript">
 
-		document.getElementById("SearchButton").addEventListener("click", () =>
-		{
-			const route = "{{ path('search', {product: '3'}) |escape('js') }}"
-			Routing.generate(route)
+		document.getElementById("SearchIntput").addEventListener("keydown", () => {
+			document.getElementById("SearchTest").href="/search/" + document.getElementById("SearchIntput").value
 		})
 
 		let mybutton = document.getElementById("btn-back-to-top");
