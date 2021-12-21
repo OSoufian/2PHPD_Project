@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello IndexController!{% endblock %}
+{% block title %}JeansStore{% endblock %}
 
 
 
@@ -30,6 +30,15 @@
         margin: 4%;
     }
 
+    #jeans-buttons{
+			color: white;
+			background: black;
+			margin-top: 3vh;
+			height: 6vh;
+			width: auto;
+			margin-right: 2vh;
+			text-decoration: none;
+		}
 
     .category img {
         height: 100%;
@@ -41,7 +50,8 @@
         font-weight: bold;
     }
     .category:hover {
-        color: gray;
+		transform: scale(1.05);
+		margin-top: 2vh;
     }
 
     
@@ -53,15 +63,16 @@
 
     <div id="content">
         <button class="category">
-            <img src="images/jeans.jpg" alt="">
+			<a href="/search/categories/Jeans" ><img src="images/jeans.jpg" alt="Jean category"></a>
             <p>Jeans</p>
         </button>
         <button class="category">
-            <img src="images/chaussures.jpg" alt="">
+            <a href="/search/categories/Chaussures"><img src="images/chaussures.jpg" alt="sneakers category"></a>
             <p>Chaussures</p>
         </button>
         <button class="category">
-            <img src="images/t-shirts.jpg" alt="">
+        <button class="category" onclick='openJeansTab()'>
+			<a href="/search/categories/T-shirts"><img src="images/t-shirts.jpg" alt="t-shirts category"></a>
             <p>T-shirts</p>
         </button>
     </div>

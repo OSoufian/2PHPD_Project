@@ -38,8 +38,7 @@
 			height: auto;
 		}
 
-		#jeans-buttons,
-		#sneakers-buttons {
+		#jeans-buttons{
 			color: white;
 			background: black;
 			margin-top: 3vh;
@@ -63,9 +62,7 @@
 		{% endfor %}
 	</div>
 
-
 	<div class="product-grid">
-
 
 		{% for product in products %}
 			<div class="width" onclick="window.location.href = '/product/'+{{product.id}}">
@@ -89,13 +86,5 @@
 				€</p>
 		</div>
 	{% endfor %}
-
-	<script>
-
-		function openJeansTab(categorie) {
-			window.location.replace(`search/categories/${categorie}`);
-		}
-	</script>
-
 
 </div>{% endblock %}
