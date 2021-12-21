@@ -6,16 +6,50 @@
 #login{
     margin-top: 3vh;
     width: 40vw;
-    left:25%;
-    background: #121212;
+    background: none;
+    border: none;
+    text-align: center;
+    justify-content: center;
+    margin-top: 6%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 5%;
 }
+
+.card-body {
+    padding: 0px;
+}
+
 #inputEmail #inputPassword {
-    width: 20vw;
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
 }
+
+.mb-3 {
+    background: none;
+    border: none;
+}
+
+#login-btn {
+    width: 200px;
+    background: #212529;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.h3 {
+    color: #212529;
+    font-size: 32px;
+}
+
 </style>
 {% endblock %}
 {% block body %}
-<form method="post" class="card d-flex aligns-items-center" id="login">
+<form method="post" id="login" class="card d-flex aligns-items-center mt-5" >
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
@@ -27,23 +61,28 @@
     {% endif %}
 
     
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+    <div class="card-body"> 
+        <div class="mb-3 form-control">
+            {# <label for="inputEmail" class="col-md-4">Email</label> #}
+            <input type="email" placeholder="Email" value="{{ last_username }}" name="email" id="inputEmail" autocomplete="email" required autofocus>
+        </div>
+
+
+        <div class="mb-3 form-control">
+            {# <label for="inputPassword" class="col-md-4">Password</label> #}
+            <input type="password" type="email" placeholder="Password" name="password" id="inputPassword" autocomplete="current-password" required>
+
+        </div>
+
+        <input type="hidden" name="_csrf_token"
+            value="{{ csrf_token('authenticate') }}"
+        >
+
+    </div>
+
+    <div class="card-body">     
     
-    <div class="mb-3 form-control">
-        <label for="inputEmail" class="col-md-4">Email</label>
-        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" autocomplete="email" required autofocus>
-    </div>
-
-
-    <div class="mb-3 form-control">
-        <label for="inputPassword" class="col-md-4">Password</label>
-        <input type="password" name="password" id="inputPassword" autocomplete="current-password" required>
-
-    </div>
-
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
 
     {#
         Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
@@ -56,8 +95,20 @@
         </div>
     #}
 
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
-    </button>
+        <button id="login-btn" class="btn btn-primary  mb-5" type="submit">
+            Login
+        </button>
+        
+        <div class="divider py-1 bg-dark  mb-3"></div>
+    
+        
+        <div  class="d-flex justify-content-center mb-3 flex-column">
+            <p class="h4">Not registered ? Create an account</p>
+
+            <a  href="/register" class="btn btn-primary bg-dark align-self-center" style="width: 15vw;">Register</a>
+        </div>
+
+    </div>
 </form>
+
 {% endblock %}

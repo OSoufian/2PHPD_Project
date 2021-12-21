@@ -14,7 +14,6 @@ use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
-
 class RegistrationFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -23,28 +22,28 @@ class RegistrationFormType extends AbstractType
             ->add('email', EmailType::class, [
                 'label' => 'Email ',
                 'label_attr' => [
-                    'class' => 'col-md-6',
+                    'class' => 'form-label',
                 ],
                 'row_attr' => [
-                    'class' => 'form-control',
+                    'class' => '',
                 ],
             ])
             ->add('billing_address', null, [
 
                 'label_attr' => [
-                    'class' => 'col-md-6',
+                    'class' => 'form-label',
                 ],
                 'row_attr' => [
-                    'class' => 'form-control',
+                    'class' => '',
                 ],
             ])
             ->add('delivery_address', null, [
-                
+
                 'label_attr' => [
-                    'class' => 'col-md-6',
+                    'class' => 'form-label',
                 ],
                 'row_attr' => [
-                    'class' => 'form-control',
+                    'class' => '',
                 ],
             ])
             ->add('agreeTerms', CheckboxType::class, [
@@ -55,10 +54,10 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
                 'label_attr' => [
-                    'class' => 'col-md-6',
+                    'class' => 'form-label',
                 ],
                 'row_attr' => [
-                    'class' => 'form-control',
+                    'class' => '',
                 ],
             ])
             ->add('plainPassword', PasswordType::class, [
@@ -78,13 +77,12 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
                 'label_attr' => [
-                    'class' => 'col-md-6',
+                    'class' => 'form-label',
                 ],
                 'row_attr' => [
-                    'class' => 'form-control',
+                    'class' => '',
                 ],
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -24,7 +24,7 @@ class ProfileController extends AbstractController
 
     public function __construct(Security $security)
     {
-       $this->security = $security;
+        $this->security = $security;
     }
 
     #[Route('/profile', name: 'profile')]
@@ -44,18 +44,18 @@ class ProfileController extends AbstractController
         //                 $form->get('plainPassword')->getData()
         //             )
         //         );
-    
+
         //         $entityManager->persist($user);
         //         $entityManager->flush();
         //         // do anything else you need here, like send an email
-    
+
         //         return $userAuthenticator->authenticateUser(
         //             $user,
         //             $authenticator,
         //             $request
         //         );
         // }
-           
+
         return $this->render('profile/index.html.twig', [
             'controller_name' => $this->getUser()->getEmail(),
         ]);

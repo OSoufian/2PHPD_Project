@@ -1,7 +1,6 @@
-version: '3.5' 
+version: '3.5'
 
-
-services: 
+services:
 
   db:
     image: mysql:5.7
@@ -36,14 +35,12 @@ services:
       - "6977:80"
     restart: always
     networks:
-        - symfony
+      - symfony
 
+networks:
+  symfony:
+    driver: bridge
 
-networks: 
-  symfony: 
-    driver: 
-      bridge 
-
-volumes: 
-  dbdata: 
-  pgadmin:
+volumes:
+  dbdata: null
+  phpMyadmin: null

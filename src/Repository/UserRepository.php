@@ -8,6 +8,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @method User|null find($id, $lockMode = null, $lockVersion = null)
@@ -23,49 +24,49 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     }
 
     /**
-     * Used to upgrade (rehash) the user's password automatically over time.
+     * Used to upgrade (update) the user's email.
      */
-    public function upgradeEmail(PasswordAuthenticatedUserInterface $user, string $newHashedPassword): void
+    public function upgradeEmail(UserInterface $user, string $newEmail): void
     {
         if (!$user instanceof User) {
             throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', \get_class($user)));
         }
 
-        $user->setEmail($newHashedPassword); # On verra ça déjà
+        $user->setEmail($newEmail);
         $this->_em->persist($user);
         $this->_em->flush();
     }
-    
+
     /**
-     * Used to upgrade (rehash) the user's password automatically over time.
+     * Used to upgrade (update) the user's Billing Address.
      */
-    public function upgradeBillingAddress(PasswordAuthenticatedUserInterface $user, string $newHashedPassword): void
+    public function upgradeBillingAddress(UserInterface $user, string $newBillingAdress): void
     {
         if (!$user instanceof User) {
             throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', \get_class($user)));
         }
 
-        $user->setBillingAddress($newHashedPassword);
+        $user->setBillingAddress($newBillingAdress);
         $this->_em->persist($user);
         $this->_em->flush();
     }
 
     /**
-     * Used to upgrade (rehash) the user's password automatically over time.
+     * Used to upgrade (update) the user's Delivery Address.
      */
-    public function upgradeDeliveryAddress(PasswordAuthenticatedUserInterface $user, string $newHashedPassword): void
+    public function upgradeDeliveryAddress(UserInterface $user, string $newDeliveryAdress): void
     {
         if (!$user instanceof User) {
             throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', \get_class($user)));
         }
 
-        $user->setDeliveryAddress($newHashedPassword);
+        $user->setDeliveryAddress($newDeliveryAdress);
         $this->_em->persist($user);
         $this->_em->flush();
     }
 
     /**
-     * Used to upgrade (rehash) the user's password automatically over time.
+     * Used to upgrade (Update) the user's password over time.
      */
     public function upgradePassword(PasswordAuthenticatedUserInterface $user, string $newHashedPassword): void
     {
@@ -81,7 +82,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     /**
      * @return User[] Returns an array of User objects
      */
-    
+
     public function getAllUsers()
     {
         return $this->createQueryBuilder('u')
@@ -91,17 +92,16 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         ;
     }
 
-    
 
-    /*
+
+
     public function findOneBySomeField($value): ?User
     {
         return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
+            ->andWhere('u.email = :val')
             ->setParameter('val', $value)
             ->getQuery()
             ->getOneOrNullResult()
         ;
     }
-    */
 }

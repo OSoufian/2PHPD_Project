@@ -6,10 +6,11 @@ use App\Entity\Products;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
-/**
+/** 
  * @method Products|null find($id, $lockMode = null, $lockVersion = null)
  * @method Products|null findOneBy(array $criteria, array $orderBy = null)
  * @method Products[]    findAll()
+ * @method Products[]    findOneBySomeField(string $value)
  * @method Products[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class ProductsRepository extends ServiceEntityRepository
@@ -19,28 +20,36 @@ class ProductsRepository extends ServiceEntityRepository
         parent::__construct($registry, Products::class);
     }
 
-    /**
-     * @return Products[] Returns an array of Products objects
-     */
-    
-    public function getAll()
+    public function getAll(): array
     {
-        return $this->createQueryBuilder('p')
-            ->getQuery()
-            ->getResult()
-        ;
+        return $this->findAll();
     }
-    
 
-    /*
-    public function findOneBySomeField($value): ?Products
+
+    public function findBySearch($value): ?array
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
+            ->where('p.name LIKE :val')
+            ->setParameter('val', "%" . $value . "%")
+            ->getQuery()
+            ->getResult(); 
+    }
+
+    public function findById($value): ?array
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.id = :val')
             ->setParameter('val', $value)
             ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            ->getResult();            
     }
-    */
+
+    public function findOneBySomeField($value): ?array
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.name LIKE :val')
+            ->setParameter('val', "%" . $value . "%")
+            ->getQuery()
+            ->getResult();            
+    }
 }
